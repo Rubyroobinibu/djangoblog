@@ -14,17 +14,17 @@
 <form method="POST">
 
     {% csrf_token %}
-
+    <div class="media">
+    <img class="rounded-circle account-img" src="{{user.profile.image.url}}" style="width:45px;height:45px">
+    <div class="media-body">
     <h1>{{object.blog_title}}</h1>
     <h2>{{object.blog_text}}</h2>
     <h3>{{object.blog_date}}</h3>
     <h4>{{object.blog_author}}</h4>
-    <a class="btn btn-outline-secondary" href="{% url 'blog-update' object.id%}">Update</a>
-
-    <a class="btn btn-outline-secondary" href="{% url 'blog-delete' object.id%}">Delete</a>
-
+    
     </form>
-    </div>
+</div>
+</div></div>
 </body>
 
 </html>

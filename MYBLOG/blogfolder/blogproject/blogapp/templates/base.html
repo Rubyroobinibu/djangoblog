@@ -20,15 +20,19 @@
                       <span class="icon-bar"></span>
                     </button>
                 <a href="/" class="navbar-brand">Blog</a>
-
-
-                <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+                 <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <a href="{%url 'blog-home'%}">Home</a>
                         </li>
                         <li class="dropdown">
                             {% if user.is_authenticated %}
+
+                            <li class="nav-item">
+                                  
+                                    <a class="nav-link" href="{%url 'blog-profile' object.id%}">{{user.username}}</a>
+                                   
+                                  </li>
                             <li><a href="{% url 'logout' %}">Logout</a></li>
 
                             {% else %}
@@ -37,8 +41,7 @@
                             {% endif %}
 
                         </li>
-
-
+                        
                     </ul>
 
 

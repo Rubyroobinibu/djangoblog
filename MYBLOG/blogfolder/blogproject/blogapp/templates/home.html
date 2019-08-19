@@ -3,7 +3,12 @@
     <div class="row">
         <div class="card" style="width: 100%; margin-top:5px;margin-bottom: 5px;box-shadow: 3px 3px 5px 6px rgb(140, 73, 194);">
             <div class="card-header" style="background-color: #c3aed4">
+                <div class="media">
+                    <img class="rounded-circle account-img" src="{{user.profile.image.url}}" style="width:45px;height:45px">
+                    <div class="media-body">
                 <h1><a href="{% url 'blog-detail' b.id %}">{{b.blog_title}}</a></h1>
+            </div>
+            </div>
             </div>
             <div class="card-body" style="background-color: #d5c7e0">
                 <small class="text-muted">{{b.blog_date}}</small>

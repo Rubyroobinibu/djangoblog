@@ -10,7 +10,8 @@ from django.views.generic import (
     DetailView, 
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView,
+    
 )
 from .models import BlogPost
 
@@ -74,11 +75,25 @@ class BlogListView(ListView):
     ordering = ['-blog_date']
     paginate_by=2
     
+class BlogProfileView(DetailView):
+    model = BlogPost
+    template_name = 'blog_profile.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
+    def test_func(self):
+        obj = self.get_object()
+        if self.request.user == obj.blog_author:
+            return True
+        return False
 
 class BlogDetailView(DetailView):
     model = BlogPost
     template_name = 'blog_detail.html'
 
+    
 class BlogCreateView(LoginRequiredMixin, CreateView):
     model = BlogPost
     fields = ['blog_title','blog_text']
@@ -90,7 +105,7 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
     
 class BlogUpdateView(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
     model = BlogPost
-    fields = ['blog_title','blog_text']
+    fields = "__all__"
     template_name = 'blog_form.html'
 
     def form_valid(self, form):
@@ -99,7 +114,7 @@ class BlogUpdateView(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
     
     def test_func(self):
         obj = self.get_object()
-        if self.request.user == obj.author:
+        if self.request.user == obj.blog_author:
             return True
         return False
 
@@ -110,7 +125,7 @@ class BlogDeleteView(UserPassesTestMixin, DeleteView):
 
     def test_func(self):
         obj = self.get_object()
-        if self.request.user == obj.author:
+        if self.request.user == obj.blog_author:
             return True
         return False
 
