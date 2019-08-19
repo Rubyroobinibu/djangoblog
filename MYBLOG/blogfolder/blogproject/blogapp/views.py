@@ -65,12 +65,14 @@ def show_home(request):
     context={'bloglist':blog_list}
     return render(request, 'home.html', context)
     
+    
 
 class BlogListView(ListView):
     model = BlogPost
     template_name = 'home.html'
     context_object_name = 'bloglist'
     ordering = ['-blog_date']
+    paginate_by=2
     
 
 class BlogDetailView(DetailView):

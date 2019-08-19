@@ -18,7 +18,7 @@
 .navbar-inverse .navbar-nav>.active>a:hover,
 .navbar-inverse .navbar-nav>li>a:hover,
 .navbar-inverse .navbar-nav>li>a:focus {
-    background-color: #c3aed4
+    background-color: #FFFFFF
 }
 
 .navbar-inverse .navbar-nav>.active>a,
@@ -37,7 +37,7 @@
 
 .dropdown-menu>li>a:hover,
 .dropdown-menu>li>a:focus {
-    background-color: #3c833c
+    background-color: #3d909b
 }
 
 .navbar-inverse {
@@ -50,7 +50,7 @@
 }
 
 .navbar-inverse {
-    border-color: #5c6b5c
+    border-color: #76aaac
 }
 
 .navbar-inverse .navbar-brand {
@@ -58,7 +58,7 @@
 }
 
 .navbar-inverse .navbar-brand:hover {
-    color: #FFCC00
+    color: rgb(51, 212, 204)
 }
 
 .navbar-inverse .navbar-nav>li>a {
@@ -67,19 +67,19 @@
 
 .navbar-inverse .navbar-nav>li>a:hover,
 .navbar-inverse .navbar-nav>li>a:focus {
-    color: #FFCC00
+    color: rgb(76, 201, 223)
 }
 
 .navbar-inverse .navbar-nav>.active>a,
 .navbar-inverse .navbar-nav>.open>a,
 .navbar-inverse .navbar-nav>.open>a:hover,
 .navbar-inverse .navbar-nav>.open>a:focus {
-    color: #FFCC00
+    color: rgb(99, 198, 207)
 }
 
 .navbar-inverse .navbar-nav>.active>a:hover,
 .navbar-inverse .navbar-nav>.active>a:focus {
-    color: #FFCC00
+    color: rgb(37, 199, 199)
 }
 
 .dropdown-menu>li>a {
