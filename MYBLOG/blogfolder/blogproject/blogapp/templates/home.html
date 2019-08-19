@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+        {% for b in bloglist %}
+        <article class="media content-section">
+            <div class ="media-body">
+                <div class="article-metadata">
+                        <h1><a href = "{% url 'blog-detail' b.id %}">{{b.blog_title}}</a></h1>
+                        <small class="text-muted">{{b.blog_date}}</small>
+                </div>
+                <h2>{{b.blog_text}}</h2>
+                <h4>{{b.blog_author}}</h4>
+            </div>
+        </article>
+            
+            
+         
+            
+        {% endfor %}
+{% endblock content %}
