@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import LoginForm
 from django.contrib import messages
 from django.contrib.auth.models import auth
+from django.contrib.auth.models import User
 from django.shortcuts import render,redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
@@ -56,7 +57,18 @@ def logout(request):
     auth.logout(request)
     return render(request,"logout.html")
 
+def show_myposts(request):
 
+    myblog_list =  BlogPost.objects.filter(blog_author=request.user).order_by('-blog_date')
+    context={'mybloglist':myblog_list}
+    return render(request, 'blog_myposts.html', context)
+    
+
+class BlogMyListView(ListView):
+    model = BlogPost
+    template_name = 'blog_myposts.html'
+    context_object_name = 'mybloglist'
+    paginate_by=2
 
 
 
@@ -76,13 +88,10 @@ class BlogListView(ListView):
     paginate_by=2
     
 class BlogProfileView(DetailView):
-    model = BlogPost
+    model = User
     template_name = 'blog_profile.html'
+    fields = "__all__" 
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-    
     def test_func(self):
         obj = self.get_object()
         if self.request.user == obj.blog_author:
@@ -106,7 +115,7 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
 class BlogUpdateView(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
     model = BlogPost
     fields = "__all__"
-    template_name = 'blog_form.html'
+    template_name = 'blog_update.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user

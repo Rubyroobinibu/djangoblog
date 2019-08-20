@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block content %} {% for b in bloglist %}
+<div class="container">
+    <div class="row">
+        <div class="card" style="width: 100%; margin-top:15px;margin-bottom: 5px;box-shadow: 3px 3px 5px 6px rgb(140, 73, 194);">
+            <div class="card-header" style="background-color: #bb9ad6">
+                <div class="media">
+                    <!-- <img class="rounded-circle account-img" src="{{user.profile.image.url}}" style="width:45px;height:45px"> -->
+                    <div class="media-body">
+                        <h1><a href="{% url 'blog-detail' b.id %}">{{b.blog_title}}</a></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body" style="background-color: rgb(197, 197, 230)">
+                <small class="text-muted">{{b.blog_date}}</small>
+                <h2>{{b.blog_text}}</h2>
+                <h4 class="float-right">- {{b.blog_author}}</h4>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+{% endfor %} {% if is_paginated %}
+
+<!-- Pagination -->
+<ul class="pagination justify-content-center mb-4" style="margin:6px">
+    {% if page_obj.has_previous %}
+    <li class="page-item">
+        <a class="page-link" href="?page={{page_obj.previous_page_number}}">&larr; Previous Page</a>
+    </li>
+    {% endif %} {% if page_obj.has_next %}
+    <li class="page-item">
+        <a class="page-link" href="?page={{page_obj.next_page_number}}">Next Page &rarr;</a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %} {% endblock content %}
