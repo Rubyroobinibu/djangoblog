@@ -105,16 +105,18 @@ class BlogDetailView(DetailView):
     
 class BlogCreateView(LoginRequiredMixin, CreateView):
     model = BlogPost
-    fields = ['blog_title','blog_text']
+    fields = ['blog_title','blog_text','blog_date']
     template_name = 'blog_form.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    
     
 class BlogUpdateView(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
     model = BlogPost
-    fields = "__all__"
+    fields = ['blog_title','blog_text']
     template_name = 'blog_update.html'
 
     def form_valid(self, form):

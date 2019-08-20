@@ -1,9 +1,12 @@
-{%extends "base.html" %} {%block content%} {% load crispy_forms_tags %}
-<h2>You have been logged out</h2>
-<div class="border-top pt-3">
-    <small class="text-muted">
-                Doesn't have an account? <a class="float-right" href="{%url 'login' %}">Login again</a>
-            </small>
+{%extends "base.html" %} {%block content%} 
+<div class="container">
+<div class="card" style="margin-left: auto;margin-right: auto;margin-top: 100px">
+
+<div class="card-body" style="background-color: #d5c7e0">
+    <h2>You have been logged out</h2>
+    <a class="float-right" href="{%url 'login' %}">Login again</a>
+</div>
+</div>
 </div>
 
 {% endblock content %}
