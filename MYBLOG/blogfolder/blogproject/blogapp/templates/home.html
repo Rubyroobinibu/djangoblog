@@ -1,19 +1,19 @@
 {% extends "base.html" %} {% block content %} {% for b in bloglist %}
 <div class="container">
     <div class="row">
-        <div class="card" style="width: 100%; margin-top:15px;margin-bottom: 5px;box-shadow: 3px 3px 5px 6px rgb(140, 73, 194);">
+        <div class="card" style="width: 100%; margin-top:15px;margin-bottom: 5px;box-shadow: 3px 3px 5px 6px rgb(66, 12, 119);">
             <div class="card-header" style="background-color: #bb9ad6">
                 <div class="media">
                     <!-- <img class="rounded-circle account-img" src="{{user.profile.image.url}}" style="width:45px;height:45px"> -->
                     <div class="media-body">
-                        <h1><a href="{% url 'blog-detail' b.id %}">{{b.blog_title}}</a></h1>
+                        <h1><a href="{% url 'blog-detail' b.id %}" style="color:rgb(83, 22, 153);font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">{{b.blog_title}}</a></h1>
                     </div>
                 </div>
             </div>
             <div class="card-body" style="background-color: rgb(197, 197, 230)">
-                <small class="text-muted">{{b.blog_date}}</small>
-                <h2>{{b.blog_text}}</h2>
-                <h4 class="float-right">- {{b.blog_author}}</h4>
+                <small class="text-muted" style="color:rgb(33, 82, 156)">{{b.blog_date}}</small>
+                <h2 style="color:rgb(41, 59, 156)">{{b.blog_text}}</h2>
+                <h4 class="float-right" style="color:rgb(49, 132, 170)">- {{b.blog_author}}</h4>
             </div>
 
 

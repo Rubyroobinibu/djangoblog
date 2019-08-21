@@ -34,6 +34,7 @@ def login(request):
     if request.method == 'POST':
         username = request.POST["username"]
         password = request.POST["password"]
+        request.session['username'] = username
     #if auth success, auth.auth()returns an obj
         user=auth.authenticate(username=username, password=password)
 
@@ -58,8 +59,10 @@ def logout(request):
     return render(request,"logout.html")
 
 def show_myposts(request):
-
-    myblog_list =  BlogPost.objects.filter(blog_author=request.user).order_by('-blog_date')
+    # user=User.objects.filter(username=request.session['username'])
+    # print(user)
+    user=User.objects.get(username='ruby')
+    myblog_list = BlogPost.objects.filter(blog_author=user.pk) 
     context={'mybloglist':myblog_list}
     return render(request, 'blog_myposts.html', context)
     
@@ -69,12 +72,15 @@ class BlogMyListView(ListView):
     template_name = 'blog_myposts.html'
     context_object_name = 'mybloglist'
     paginate_by=2
+    ordering = ['-blog_date']
+
 
 
 
 def show_home(request):
 
     blog_list =  BlogPost.objects.all()
+    print(blog_list)
     context={'bloglist':blog_list}
     return render(request, 'home.html', context)
     
@@ -98,6 +104,10 @@ class BlogProfileView(DetailView):
             return True
         return False
 
+
+
+
+
 class BlogDetailView(DetailView):
     model = BlogPost
     template_name = 'blog_detail.html'
@@ -109,7 +119,7 @@ class BlogCreateView(LoginRequiredMixin, CreateView):
     template_name = 'blog_form.html'
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.blog_author = self.request.user
         return super().form_valid(form)
 
     

@@ -14,6 +14,8 @@ class Profile(models.Model):
 
 
 
+
+
 class BlogPost(models.Model):
     blog_title = models.CharField(max_length = 50)
     blog_text = models.TextField()

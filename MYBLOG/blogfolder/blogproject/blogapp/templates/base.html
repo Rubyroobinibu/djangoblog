@@ -18,7 +18,7 @@
                       <span class="navbar-toggler-icon"><i class="fa fa-pencil-square-o" style="font-size:30px;color:white"></i></span>
                      
                     </button>
-                <a href="/" class="navbar-brand">Personal Blog</a>
+                <a href="/" class="navbar-brand" style="font-display: italic"><b>Personal Blog</b></a>
                 <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -35,6 +35,11 @@
                             <li class="nav-item">
 
                                 <a class="nav-link" href="{% url 'blog-create'  %}">Add New</a>
+
+                            </li>
+                            <li class="nav-item">
+
+                                <a class="nav-link" href="{% url 'blog-mylist'  %}">My Posts</a>
 
                             </li>
                             <li><a href="{% url 'logout' %}">Logout</a></li>
@@ -60,7 +65,7 @@
 
     <footer class="page-footer font-small fixed-bottom" style="position: fixed;margin-top:10px;">
         <div class="footer-copyright text-center py-3">
-            <p class="m-0 text-center text-black ">Copyright &copy; Your Website 2019</p>
+            <p class="m-0 text-center text-black " style="font-display: initial"><b>Copyright &copy; Your Website 2019</b></p>
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

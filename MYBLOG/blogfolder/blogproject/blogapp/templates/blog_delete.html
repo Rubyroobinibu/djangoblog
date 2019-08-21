@@ -1,23 +1,27 @@
 {%extends "base.html" %} {%block content%} {% load crispy_forms_tags %}
-<div class="card" style="width: 50%;text-align:center; margin-left:auto;margin-right:auto;margin-top:100px;box-shadow: 3px 3px 5px 6px rgb(140, 73, 194);">
-    <div class="card-header" style="background-color: #be8ce7;color: white">Delete Post</div>
-    <div class="content-section">
-        <div class="card-body" style="background-color: #c4afdd">
-            <form method="POST">
+<div class="card" style="width: 50%;text-align:center; margin-left:auto;margin-right:auto;margin-top:100px;box-shadow: 3px 3px 5px 6px rgb(66, 12, 119);">
+    <div class="card-header" style="background-color: #be8ce7;color:rgb(83, 22, 153);font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:xx-large ">DELETE POST</div>
+    <div class=" content-section ">
+        <div class="card-body " style="background-color: #c4afdd ">
+            <form method="POST ">
                 {% csrf_token %}
-                <fieldset class="form-group">
+                <fieldset class="form-group ">
 
-                    <h2>Are you sure you want to delete this post "{{object.blog_title}}" </h2>
+                    <h3 style="color:rgb(83, 22, 153);font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ">Are you sure you want to delete this post "{{object.blog_title}} " </h3>
                     {{form|crispy}}
                 </fieldset>
-                <div class="form-group" style="background-color: #be8ce7;color: white">
-                    <button class="btn btn-outline-danger" type="submit">Yes, Delete</button>
-                    <a class="btn btn-outline-secondary" href="{% url 'blog-detail' object.id%}">Cancel</a>
 
-                </div>
             </form>
+
         </div>
+
     </div>
+    <div class="border-top pt-3 " style="background-color: #be8ce7;color: white ">
+        <button class="btn btn-outline-danger " type="submit ">Yes, Delete</button>
+        <a class="btn btn-outline-secondary " href="{% url 'blog-detail' object.id%} ">Cancel</a>
+
+    </div>
+
 </div>
 
 {% endblock content %}

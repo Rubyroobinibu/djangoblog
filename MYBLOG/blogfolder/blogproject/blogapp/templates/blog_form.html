@@ -1,14 +1,21 @@
 {%extends "base.html" %} {%block content%} {% load crispy_forms_tags %}
-<div class="content-section">
-    <form method="POST">
-        {% csrf_token %}
-        <fieldset class="form-group">
-            <legend class="border-botton mb-4">Create new blog post</legend>
-            {{form|crispy}}
-        </fieldset>
-        <div class="form-group">
-            <button class="btn btn-outline-info" type="submit">Post</button>
+<div class="card" style="width: 50%;text-align:center; margin-left:auto;margin-right:auto;margin-top:20px;box-shadow: 3px 3px 5px 6px rgb(66, 12, 119);">
+    <div class="card-header" style="background-color: #be8ce7;color:rgb(83, 22, 153);font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;font-size:large"><b>CREATE NEW BLOG</b></div>
+    <div class="content-section">
+        <div class="card-body" style="background-color: #c4afdd">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+
+                    {{form|crispy}}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Post</button>
+                </div>
+            </form>
+
         </div>
-    </form>
+
+    </div>
 </div>
-{% endblock content %}
+{%endblock content%}
