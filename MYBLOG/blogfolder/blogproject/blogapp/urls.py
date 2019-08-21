@@ -19,7 +19,7 @@ urlpatterns = [
     path("register/", views.register, name="register"),
     path("login/", views.login, name="login"),
     path("logout/", views.logout, name="logout"),
-    # path('blog/mylist/', BlogMyListView.as_view(), name = 'blog-mylist'),
+    
     path('', BlogListView.as_view(), name = 'blog-home'),
     path('blog/<int:pk>', BlogDetailView.as_view(), name = 'blog-detail'),
     path('blogprofile/<int:pk>', BlogProfileView.as_view(), name = 'blogprofile'),

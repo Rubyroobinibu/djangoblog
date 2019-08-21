@@ -9,12 +9,15 @@
                     
                     {{form|crispy}}
                 </fieldset>
+                <div class="border-top pt-3 " style="background-color: #be8ce7;color: white">
+                    <button class="btn btn-outline-info" type="submit" href="{% url 'blog-detail' object.id%}">save</button>
+                </div>
                 
             </form>
         </div>
     </div>
-    <div class="border-top pt-3 " style="background-color: #be8ce7;color: white"></div>
-            <button class="btn btn-outline-info" type="submit" href="{% url 'blog-detail' object.id%}">save</button>
-        </div>
+
+    
+    
 </div>
 {%endblock content%}

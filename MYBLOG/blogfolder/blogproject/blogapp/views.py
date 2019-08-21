@@ -4,6 +4,7 @@ from .forms import LoginForm
 from django.contrib import messages
 from django.contrib.auth.models import auth
 from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render,redirect
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
@@ -130,7 +131,7 @@ class BlogUpdateView(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
     template_name = 'blog_update.html'
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.author = self.request.user  
         return super().form_valid(form)
     
     def test_func(self):
@@ -139,14 +140,18 @@ class BlogUpdateView(LoginRequiredMixin, UserPassesTestMixin,UpdateView):
             return True
         return False
 
-class BlogDeleteView(UserPassesTestMixin, DeleteView):
+
+class BlogDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = BlogPost
     template_name = 'blog_delete.html'
     success_url = '/'
-
+    
+    
     def test_func(self):
         obj = self.get_object()
         if self.request.user == obj.blog_author:
+            print(obj.blog_author)
+            print(self.request.user )
             return True
         return False
 
