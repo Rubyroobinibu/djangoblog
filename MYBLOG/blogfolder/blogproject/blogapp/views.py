@@ -60,9 +60,9 @@ def logout(request):
     return render(request,"logout.html")
 
 def show_myposts(request):
-    # user=User.objects.filter(username=request.session['username'])
-    # print(user)
-    user=User.objects.get(username='ruby')
+    user=User.objects.get(username=request.session['username'])
+    print(user.username)
+    user=User.objects.get(username=user.username)
     myblog_list = BlogPost.objects.filter(blog_author=user.pk) 
     context={'mybloglist':myblog_list}
     return render(request, 'blog_myposts.html', context)
